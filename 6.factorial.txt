@@ -1,0 +1,91 @@
+Factorial using FOR loop
+#!/bin/bash
+
+echo "Enter a number:"
+read n
+
+fact=1
+
+for ((i=1; i<=n; i++))
+do
+    fact=$((fact*i))
+done
+
+echo "Factorial = $fact"
+
+Factorial using WHILE loop
+
+#!/bin/bash
+
+echo "Enter a number:"
+read n
+
+fact=1
+i=1
+
+while [ $i -le $n ]
+do
+    fact=$((fact*i))
+    i=$((i+1))
+done
+
+echo "Factorial = $fact"
+
+Factorial using UNTIL loop
+
+#!/bin/bash
+
+echo "Enter a number:"
+read n
+
+fact=1
+i=1
+
+until [ $i -gt $n ]
+do
+    fact=$((fact*i))
+    i=$((i+1))
+done
+
+echo "Factorial = $fact"
+
+Check Even or Odd using IF-ELSE
+Code:
+#!/bin/bash
+
+echo "Enter a number:"
+read n
+
+if [ $((n%2)) -eq 0 ]
+then
+    echo "Even number"
+else
+    echo "Odd number"
+fi
+
+Display a number using FUNCTION
+
+
+#!/bin/bash
+
+display()
+{
+    echo "Number is: $1"
+}
+
+echo "Enter a number:"
+read n
+
+display $n
+
+
+
+
+
+
+
+
+
+
+
+

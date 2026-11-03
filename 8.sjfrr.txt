@@ -1,0 +1,130 @@
+/*Create and manage parent and child processes*/
+import os
+import sys
+
+print("Process Management Program")
+
+pid = os.fork()
+
+if pid == 0:
+    print("\nChild Process")
+    print("Child Process ID:", os.getpid())
+    print("Parent Process ID:", os.getppid())
+    print("Child process is executing")
+    sys.exit(0)
+
+else:
+    print("\nParent Process")
+    print("Parent Process ID:", os.getpid())
+    print("Child Process ID:", pid)
+
+    os.wait()
+
+    print("Child process completed")
+    print("Parent process completed")
+
+
+/*SJF CPU Scheduling Algorithm*/
+
+
+n = int(input("Enter number of process: "))
+
+bt = []
+p = []
+
+for i in range(n):
+    b = int(input("Enter burst time: "))
+    bt.append(b)
+    p.append(i + 1)
+
+for i in range(n):
+    for j in range(i + 1, n):
+        if bt[i] > bt[j]:
+            temp = bt[i]
+            bt[i] = bt[j]
+            bt[j] = temp
+
+            temp = p[i]
+            p[i] = p[j]
+            p[j] = temp
+
+wt = [0] * n
+tat = [0] * n
+
+for i in range(1, n):
+    wt[i] = wt[i-1] + bt[i-1]
+
+for i in range(n):
+    tat[i] = wt[i] + bt[i]
+
+print("\nP\tBT\tWT\tTAT")
+
+for i in range(n):
+    print(p[i], "\t", bt[i], "\t", wt[i], "\t", tat[i])
+
+print("Average WT =", sum(wt)/n)
+print("Average TAT =", sum(tat)/n)
+
+/*Round Robin Scheduling in Python*/
+
+
+n = int(input("Enter number of process: "))
+
+bt = []
+
+for i in range(n):
+    b = int(input("Enter burst time: "))
+    bt.append(b)
+
+qt = int(input("Enter time quantum: "))
+
+rem = bt.copy()
+
+wt = [0] * n
+tat = [0] * n
+ct = [0] * n
+
+time = 0
+
+while True:
+    done = True
+
+    for i in range(n):
+        if rem[i] > 0:
+            done = False
+
+            if rem[i] > qt:
+                time = time + qt
+                rem[i] = rem[i] - qt
+
+            else:
+                time = time + rem[i]
+                rem[i] = 0
+                ct[i] = time
+
+    if done:
+        break
+
+for i in range(n):
+    tat[i] = ct[i]
+    wt[i] = tat[i] - bt[i]
+
+print("\nP\tBT\tWT\tTAT")
+
+for i in range(n):
+    print(i+1, "\t", bt[i], "\t", wt[i], "\t", tat[i])
+
+print("Average WT =", sum(wt)/n)
+print("Average TAT =", sum(tat)/n)
+
+
+Difference between SJF and Round Robin
+SJF	Round Robin
+Shortest process executes first	Every process gets a time quantum
+Non-preemptive in this program	Preemptive
+Uses burst time	Uses time quantum
+Can cause starvation	Provides fair CPU sharing
+Lower average waiting time in many cases	Better response for interactive workloads
+Suitable when short jobs are prioritized	Suitable for time-sharing systems
+
+

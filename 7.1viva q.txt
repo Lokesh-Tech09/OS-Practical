@@ -1,0 +1,60 @@
+Viva questions and answers
+1. What is a process?
+
+A process is a program that is currently executing.
+
+2. What is a system call?
+
+A system call is a method through which a program requests services from the operating system.
+
+3. What is fork()?
+
+fork() is a system call used to create a new child process.
+
+4. What is the difference between a parent and child process?
+
+A parent process creates another process, called the child process.
+
+5. What is FCFS?
+
+FCFS is a CPU scheduling algorithm in which the process that arrives first executes first.
+
+6. What is SJF?
+
+SJF is a scheduling algorithm in which the process with the shortest burst time executes first.
+
+7. What is burst time?
+
+Burst time is the total CPU execution time required by a process.
+
+8. What is waiting time?
+
+Waiting time is the total time a process spends waiting in the ready queue.
+
+9. What is turnaround time?
+
+Turnaround time is the total time from process arrival to process completion.
+
+10. Which algorithm gives a lower average waiting time?
+
+SJF generally gives a lower average waiting time when burst times are known.
+
+11. What is starvation?
+
+Starvation occurs when a process waits for a very long time because other processes keep getting priority.
+
+12. What is the convoy effect?
+
+The convoy effect occurs when shorter processes wait behind a long process in FCFS scheduling.
+
+13. What is a non-preemptive algorithm?
+
+An algorithm in which a process cannot be interrupted by the scheduler once it starts executing.
+
+14. What is the purpose of wait()?
+
+It makes the parent process wait for the termination of its child process.
+
+15. What is process ID?
+
+A process ID (PID) is a unique number assigned to a process by the operating system.
